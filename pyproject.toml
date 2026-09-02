@@ -1,14 +1,23 @@
 [project]
-name = "loganalyzer"
+name = "log_analyzer"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "Your Name",email = "you@example.com"}
+    { name = "Your Name", email = "you@example.com" }
 ]
 requires-python = ">=3.13"
-dependencies = [
-]
 
+[tool.poetry]
+packages = [{ include = "log_analyzer", from = "src" }]
+
+[tool.poetry.dependencies]
+structlog = "^24.4"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3"
+black = "^24.8"
+isort = "^5.13"
+mypy = "^1.9"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

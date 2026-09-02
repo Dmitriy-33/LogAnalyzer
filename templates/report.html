@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>URLs Report</title>
+  <script src="jquery.tablesorter.min.js"></script>
+  <style>
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 6px 8px; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <h1>Slow URLs Report</h1>
+  <table id="report-table">
+    <thead>
+      <tr>
+        <th>URL</th>
+        <th>Count</th>
+        <th>Count %</th>
+        <th>Time Sum (s)</th>
+        <th>Time %</th>
+        <th>Avg (s)</th>
+        <th>Max (s)</th>
+        <th>Med (s)</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script>
+    const data = $table_json;
+    const tbody = document.querySelector('#report-table tbody');
+    data.forEach(row => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${row.url}</td>
+        <td>${row.count}</td>
+        <td>${row.count_perc}</td>
+        <td>${row.time_sum}</td>
+        <td>${row.time_perc}</td>
+        <td>${row.time_avg}</td>
+        <td>${row.time_max}</td>
+        <td>${row.time_med}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+    $("#report-table").tablesorter();
+  </script>
+</body>
+</html>
